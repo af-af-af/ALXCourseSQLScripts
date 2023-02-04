@@ -25,7 +25,7 @@ create table dogs
 create table employees
 (
 --  name type constraints
-	id int not null primary key identity,
+	id uniqueidentifier not null primary key,
 	first_name nvarchar(50) not null,
 	phone_number varchar(25) not null unique,
 	email varchar(50) not null unique,

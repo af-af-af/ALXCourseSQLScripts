@@ -20,6 +20,17 @@ create table employees
 )
 go
 
+create table paychecks
+(
+	id uniqueidentifier not null primary key,
+	paycheck_number varchar(50) not null,
+	payment_gross decimal(10,2) not null default 0.00,
+	payment_net decimal(10,2) not null default 0.00,
+	employee_id uniqueidentifier not null foreign key references employees(id),
+	paid bit default 0
+)
+go
+
 insert into departments(id, department_name)
 values (NEWID(), 'HR'),
 	(NEWID(), 'IT'),
@@ -34,9 +45,13 @@ values(NEWID(), 'Tomasz', 'IeeeMacarena', 'a@kotamaala.com', 'FA50E322-A986-4F5D
 (NEWID(), 'Piotr', 'BBB', 'bbb@kotamaala.com', '4656040C-EE24-44D1-98B6-C534E93CA2FA'),
 (NEWID(), 'Misio', 'Yya', 'pp@kotamaala.com', '886EEE76-1508-44A6-A172-C2A5255B9DA6')
 
+insert into paychecks(id, paycheck_number, employee_id)
+values (NEWID(), '1/1/2023', '96A60F63-18FA-480B-B606-F46300D9ED8B')
+
 select * from departments
 select * from employees
 select * from employees inner join departments on employees.department_id=departments.id
+select * from paychecks
 
 select department_name from departments
 select first_name, last_name from employees
