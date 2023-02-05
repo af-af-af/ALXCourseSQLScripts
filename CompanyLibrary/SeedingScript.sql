@@ -1,7 +1,11 @@
-use company
+use WebCompany
 go
 
-insert into departments(id, department_name)
+select * from Employees
+select * from Departments
+select * from Paychecks
+
+insert into Departments(Id, DepartmentName)
 values (NEWID(), 'HR'),
 	(NEWID(), 'IT'),
 	(NEWID(), 'PR'),
@@ -9,11 +13,14 @@ values (NEWID(), 'HR'),
 	(NEWID(), 'Office')
 go
 
-insert into employees(id, first_name, last_name, email, department_id)
-values(NEWID(), 'Tomasz', 'IeeeMacarena', 'a@kotamaala.com', 'FA50E322-A986-4F5D-8776-328E9A7E888A'),
-(NEWID(), 'Jacek', 'Aaa', 'aa@kotamaala.com', 'FA50E322-A986-4F5D-8776-328E9A7E888A'),
-(NEWID(), 'Piotr', 'BBB', 'bbb@kotamaala.com', '4656040C-EE24-44D1-98B6-C534E93CA2FA'),
-(NEWID(), 'Misio', 'Yya', 'pp@kotamaala.com', '886EEE76-1508-44A6-A172-C2A5255B9DA6')
+insert into Paychecks(Id, PaycheckNumber)
+values(NEWID(), '111'),
+(NEWID(), '121'),
+(NEWID(), '131'),
+(NEWID(), '141')
 
-insert into paychecks(id, paycheck_number, employee_id)
-values (NEWID(), '1/1/2023', '96A60F63-18FA-480B-B606-F46300D9ED8B')
+insert into employees(Id, FirstName, LastName, Email, DepartmentId, PaycheckId)
+values(NEWID(), 'Tomasz', 'IeeeMacarena', 'a@kotamaala.com', 'B02DA1C5-A687-4414-B210-553B05AB3A4B', '1FF1E649-E955-40DC-8988-661E73CC4A2C'),
+(NEWID(), 'Jacek', 'Aaa', 'aa@kotamaala.com', 'CAC12295-DF8F-4659-A305-10C2FAE1BD4B', '3C6AD487-5453-418D-BB8F-A0E3C2387B43'),
+(NEWID(), 'Piotr', 'BBB', 'bbb@kotamaala.com', 'CAC12295-DF8F-4659-A305-10C2FAE1BD4B', 'C8176397-4104-4BB5-B2A0-CB921881C842'),
+(NEWID(), 'Misio', 'Yya', 'pp@kotamaala.com', '275880C8-58A5-4668-A16A-1975CDCF40E6', 'FCD908E8-26C4-4FAF-814A-E52344C3A73D')
